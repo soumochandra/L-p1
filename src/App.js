@@ -10,21 +10,26 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
 
-  const fetchBooks = async () => {
-    try {
-      const res = await axios.get("https://library-management-mern-1.onrender.com");
-      setBooks(res.data);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+const fetchBooks = async () => {
+  try {
+    const res = await axios.get("https://library-management-mern-1.onrender.com/api/books");
+    setBooks(res.data);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
-  const handleDelete = async (id) => {
-    await axios.delete(`https://library-management-mern-1.onrender.com/${id}`);
+const handleDelete = async (id) => {
+  try {
+    await axios.delete(`https://library-management-mern-1.onrender.com/api/books/${id}`);
     fetchBooks();
-  };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
   useEffect(() => {
     fetchBooks();
