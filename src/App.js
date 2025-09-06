@@ -12,7 +12,7 @@ function App() {
 
 const fetchBooks = async () => {
   try {
-    const res = await axios.get("https://library-management-mern-1.onrender.com/api/books");
+    const res = await axios.get("https://library-management-mern-1.onrender.com");
     setBooks(res.data);
   } catch (err) {
     console.error(err);
@@ -23,7 +23,7 @@ const fetchBooks = async () => {
 
 const handleDelete = async (id) => {
   try {
-    await axios.delete(`https://library-management-mern-1.onrender.com/api/books/${id}`);
+    await axios.delete(`https://library-management-mern-1.onrender.com${id}`);
     fetchBooks();
   } catch (err) {
     console.error(err);
